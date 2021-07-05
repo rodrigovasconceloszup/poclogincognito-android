@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">PocLoginCognitoAndroid</string>
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="prompt_user">Qual o seu usuário?</string>
+    <string name="prompt_password">Digite sua senha :)</string>
+    <string name="action_sign_in">entrar</string>
+    <string name="greeting1">iupp! Que bom que você veio!</string>
+    <string name="greeting2">Acesse sua conta</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
