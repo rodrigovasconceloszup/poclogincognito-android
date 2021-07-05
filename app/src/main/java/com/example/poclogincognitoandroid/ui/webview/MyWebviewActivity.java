@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.poclogincognitoandroid.R;
-import com.google.android.material.appbar.AppBarLayout;
 
 public class MyWebviewActivity extends AppCompatActivity {
 
@@ -16,7 +16,6 @@ public class MyWebviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Same app");
         setContentView(R.layout.activity_webview);
         webView = findViewById(R.id.web);
         webView.getSettings().setSupportMultipleWindows(true);
