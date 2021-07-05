@@ -1,7 +1,11 @@
 package com.example.poclogincognitoandroid.ui.login;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -15,6 +19,7 @@ import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.poclogincognitoandroid.R;
 import com.example.poclogincognitoandroid.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
@@ -80,7 +85,16 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 final String username = usernameEditText.getText().toString();
                 final String password = passwordEditText.getText().toString();
-                loginButton.setEnabled(allFieldsCompleted(username, password));
+                final boolean allFieldsCompleted = allFieldsCompleted(username, password);
+
+                if (allFieldsCompleted) {
+                    loginButton.setEnabled(false);
+                    Drawable roundDrawable = getResources().getDrawable(R.drawable.rounded_button);
+                    roundDrawable.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+                    loginButton.setBackground(roundDrawable);
+                    loginButton.setTextColor(getResources().getColor(R.color.mainColor));
+                }
+                loginButton.setEnabled(allFieldsCompleted);
             }
         };
         usernameEditText.addTextChangedListener(afterTextChangedListener);
