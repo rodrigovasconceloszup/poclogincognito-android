@@ -1,6 +1,7 @@
 package com.example.poclogincognitoandroid.ui.login;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -21,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.poclogincognitoandroid.R;
 import com.example.poclogincognitoandroid.databinding.ActivityLoginBinding;
+import com.example.poclogincognitoandroid.ui.webview.MyWebviewActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -63,7 +65,9 @@ public class LoginActivity extends AppCompatActivity {
                 showLoginFailed(loginResult.getError());
             }
             if (loginResult.getSuccess() != null) {
-                // TODO
+                // TODO logica de navegacao aqui
+                Intent intent = new Intent(this, MyWebviewActivity.class);
+                startActivity(intent);
             }
             setResult(Activity.RESULT_OK);
 
