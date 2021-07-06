@@ -68,10 +68,10 @@ public class LoginActivity extends AppCompatActivity {
                 // TODO logica de navegacao aqui
                 Intent intent = new Intent(this, MyWebviewActivity.class);
                 startActivity(intent);
-            }
-            setResult(Activity.RESULT_OK);
+                setResult(Activity.RESULT_OK);
 
-            finish();
+                finish();
+            }
         });
 
         TextWatcher afterTextChangedListener = new TextWatcher() {
