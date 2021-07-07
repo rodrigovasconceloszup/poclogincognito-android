@@ -16,6 +16,8 @@ public class MyWebviewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final String urlRedirect = getIntent().getStringExtra("urlRedirect");
         setContentView(R.layout.activity_webview);
         webView = findViewById(R.id.web);
         webView.getSettings().setSupportMultipleWindows(true);
@@ -26,6 +28,8 @@ public class MyWebviewActivity extends AppCompatActivity {
                 return true;
             }
         });
-        webView.loadUrl("http://poc-iupp-sample-app.dev.iupp.io.s3-website-sa-east-1.amazonaws.com/#/");
+        
+        final String code = urlRedirect.split("code")[1];
+        webView.loadUrl("http://poc-iupp-sample-app.dev.iupp.io.s3-website-sa-east-1.amazonaws.com/#/code=" + code);
     }
 }
