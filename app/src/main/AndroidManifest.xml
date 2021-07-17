@@ -14,7 +14,7 @@
         android:theme="@style/Theme.PocLoginCognitoAndroid"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.itau.ItauActivity"
+            android:name=".ui.iupp.IuppActivity"
             android:label="@string/iupp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

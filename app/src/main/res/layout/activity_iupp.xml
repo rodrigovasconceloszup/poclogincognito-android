@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/itauBackGround"
-    tools:context=".ui.itau.ItauActivity">
+    tools:context=".ui.iupp.IuppActivity">
 
     <ImageView
         android:id="@+id/imageView4"
@@ -125,7 +125,7 @@
                 tools:layout_editor_absoluteY="147dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/goToIuppBtn"
                 android:layout_width="300dp"
                 android:layout_height="56dp"
                 android:layout_marginLeft="20dp"
