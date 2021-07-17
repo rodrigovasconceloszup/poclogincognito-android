@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/itauBackGround"
+    tools:context=".ui.itau.ItauActivity">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="600dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="-20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/iupp_girl" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="391dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85">
+
+        <LinearLayout
+            android:id="@+id/cardLinearLayout"
+            android:layout_width="361dp"
+            android:layout_height="491dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.824"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.503">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="17dp"
+                android:text="Programa iupp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="340dp"
+                android:layout_height="42dp"
+
+                android:orientation="horizontal"
+                tools:layout_editor_absoluteX="-4dp"
+                tools:layout_editor_absoluteY="36dp">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:text="sobre o iupp"
+                    tools:layout_editor_absoluteX="32dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <Space
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/expandOcultTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:text="expandir"
+                    tools:layout_editor_absoluteX="32dp"
+                    tools:layout_editor_absoluteY="16dp" />
+
+                <ImageView
+                    android:id="@+id/expandIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/arrow_down" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/moreTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="2dp"
+                    android:text="some text"
+                    tools:layout_editor_absoluteX="32dp"
+                    tools:layout_editor_absoluteY="16dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="pontos disponíveis"
+                tools:layout_editor_absoluteX="29dp"
+                tools:layout_editor_absoluteY="105dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50.000"
+                tools:layout_editor_absoluteX="29dp"
+                tools:layout_editor_absoluteY="147dp" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="300dp"
+                android:layout_height="56dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="60dp"
+                android:backgroundTint="@color/iuppSecondaryColor"
+                android:text="ir para o iupp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="477dp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

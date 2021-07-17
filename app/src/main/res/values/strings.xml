@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">PocLoginCognitoAndroid</string>
+    <string name="iupp">iupp</string>
     <!-- Strings related to login -->
     <string name="prompt_user">Qual o seu usuário?</string>
     <string name="prompt_password">Digite sua senha :)</string>
