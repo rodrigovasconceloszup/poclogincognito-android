@@ -9,6 +9,7 @@
     <color name="black">#FF000000</color>
     <color name="itauBackGround">#FFEFE9E5</color>
     <color name="iuppSecondaryColor">#FFDC772C</color>
+    <color name="iuppContainerColor">#FFFAF7F5</color>
     <color name="lightGrey">#D3D3D3</color>
     <color name="white">#FFFFFFFF</color>
     <color name="disabledColor">#FFE1E4EC</color>

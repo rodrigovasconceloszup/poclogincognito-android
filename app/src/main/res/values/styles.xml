@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="iupp">
+        <item name="android:textSize">
+            24sp
+        </item>
+        <item name="android:textColor">
+            #231D19
+        </item>
+    </style>
+    <style name="iuppText">
+        <item name="android:textSize">
+            14sp
+        </item>
+        <item name="android:textColor">
+            #56504C
+        </item>
+    </style>
+    <style name="iuppMegaBold">
+        <item name="android:textSize">
+            18sp
+        </item>
+        <item name="android:textColor">
+            #231D19
+        </item>
+    </style>
+</resources>
