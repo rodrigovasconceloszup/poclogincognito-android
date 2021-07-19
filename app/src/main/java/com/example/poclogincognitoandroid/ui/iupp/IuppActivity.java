@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Space;
 import android.widget.TextView;
 
 import com.example.poclogincognitoandroid.R;
@@ -61,6 +62,7 @@ public class IuppActivity extends AppCompatActivity {
         expandIcon.setOnClickListener(v -> {
             isExpanded = !isExpanded;
             if (v.equals(expandIcon)) {
+                expandIcon.setImageDrawable(getResources().getDrawable(isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
                 if (!isExpanded) {
                     expandOcultTextView.setText("ocultar");
                     moreTextLayout.setVisibility(View.VISIBLE);
