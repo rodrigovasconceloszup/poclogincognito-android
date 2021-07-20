@@ -23,6 +23,7 @@
         android:layout_height="391dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
