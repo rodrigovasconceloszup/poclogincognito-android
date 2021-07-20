@@ -48,6 +48,9 @@ public class IuppActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final String points = getIntent().getStringExtra("points");
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -114,6 +117,7 @@ public class IuppActivity extends AppCompatActivity {
 
                         Intent intent = new Intent(IuppActivity.this, MyWebviewActivity.class);
                         intent.putExtra("urlRedirect", urlRedirect);
+                        intent.putExtra("points", points);
                         startActivity(intent);
                         setResult(Activity.RESULT_OK);
                     } catch (JSONException e) {

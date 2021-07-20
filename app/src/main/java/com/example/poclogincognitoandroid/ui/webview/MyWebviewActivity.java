@@ -18,6 +18,10 @@ public class MyWebviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         final String urlRedirect = getIntent().getStringExtra("urlRedirect");
+        final String points = getIntent().getStringExtra("points");
+
+        System.out.println(points);
+
         setContentView(R.layout.activity_webview);
         webView = findViewById(R.id.web);
         webView.getSettings().setSupportMultipleWindows(true);
@@ -28,7 +32,7 @@ public class MyWebviewActivity extends AppCompatActivity {
                 return true;
             }
         });
-        
+
         final String accessToken = urlRedirect.split("access_token")[1];
         final String idToken = urlRedirect.split("id_token")[1];
         webView.loadUrl("http://poc-iupp-sample-app.dev.iupp.io.s3-website-sa-east-1.amazonaws.com/#/code=" + accessToken);
