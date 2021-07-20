@@ -11,7 +11,12 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="361dp"
         android:layout_height="wrap_content"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/lightGrey"
+        app:strokeWidth="1dp"
+        app:cardUseCompatPadding="true"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCard
+        .Cut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
