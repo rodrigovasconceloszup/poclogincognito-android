@@ -59,19 +59,21 @@ public class IuppActivity extends AppCompatActivity {
         expandOcultTextView = findViewById(R.id.expandOcultTextView);
         cardLinearLayout = findViewById(R.id.cardLinearLayout);
         moreTextLayout = findViewById(R.id.moreTextLayout);
-        expandIcon.setOnClickListener(v -> {
+
+        View.OnClickListener onClick = v -> {
             isExpanded = !isExpanded;
-            if (v.equals(expandIcon)) {
-                expandIcon.setImageDrawable(getResources().getDrawable(isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
-                if (!isExpanded) {
-                    expandOcultTextView.setText("ocultar");
-                    moreTextLayout.setVisibility(View.VISIBLE);
-                } else {
-                    expandOcultTextView.setText("expandir");
-                    moreTextLayout.setVisibility(View.GONE);
-                }
+            if (isExpanded) {
+                cardLinearLayout.setMinimumHeight(400);
+                expandOcultTextView.setText("ocultar");
+                moreTextLayout.setVisibility(View.VISIBLE);
+            } else {
+                expandOcultTextView.setText("expandir");
+                moreTextLayout.setVisibility(View.GONE);
             }
-        });
+            expandIcon.setImageDrawable(getResources().getDrawable(!isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
+        };
+        expandIcon.setOnClickListener(onClick);
+        expandOcultTextView.setOnClickListener(onClick);
 
         goToIuppBtn = (Button) findViewById(R.id.goToIuppBtn);
         goToIuppBtn.setOnClickListener(v -> {

@@ -39,19 +39,20 @@ public class Itaucard extends AppCompatActivity {
             startActivity(intent);
             setResult(Activity.RESULT_OK);
         });
-        expandIcon.setOnClickListener(v -> {
+
+        View.OnClickListener onClick = v -> {
             isExpanded = !isExpanded;
-            if (v.equals(expandIcon)) {
-                expandIcon.setImageDrawable(getResources().getDrawable(isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
-                if (!isExpanded) {
-                    cardLinearLayout.setMinimumHeight(400);
-                    expandOcultTextView.setText("ocultar");
-                    moreTextLayout.setVisibility(View.VISIBLE);
-                } else {
-                    expandOcultTextView.setText("expandir");
-                    moreTextLayout.setVisibility(View.GONE);
-                }
+            if (isExpanded) {
+                cardLinearLayout.setMinimumHeight(400);
+                expandOcultTextView.setText("ocultar");
+                moreTextLayout.setVisibility(View.VISIBLE);
+            } else {
+                expandOcultTextView.setText("expandir");
+                moreTextLayout.setVisibility(View.GONE);
             }
-        });
+            expandIcon.setImageDrawable(getResources().getDrawable(!isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
+        };
+        expandIcon.setOnClickListener(onClick);
+        expandOcultTextView.setOnClickListener(onClick);
     }
 }
