@@ -29,7 +29,8 @@ public class MyWebviewActivity extends AppCompatActivity {
             }
         });
         
-        final String code = urlRedirect.split("code")[1];
-        webView.loadUrl("http://poc-iupp-sample-app.dev.iupp.io.s3-website-sa-east-1.amazonaws.com/#/code=" + code);
+        final String accessToken = urlRedirect.split("access_token")[1];
+        final String idToken = urlRedirect.split("id_token")[1];
+        webView.loadUrl("http://poc-iupp-sample-app.dev.iupp.io.s3-website-sa-east-1.amazonaws.com/#/code=" + accessToken);
     }
 }

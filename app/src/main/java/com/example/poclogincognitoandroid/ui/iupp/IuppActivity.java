@@ -77,8 +77,15 @@ public class IuppActivity extends AppCompatActivity {
         goToIuppBtn.setOnClickListener(v -> {
             final String username = "marco";
             final String password = "Iupp@123456";
+            final String name = "Marco";
+            final String email = "marco@gmail.com";
+            final String phoneNumber = "+55DDDTELEFONE";
 
-            String payload = "{\"username\": " + "\"" + username + "\"" +", \"password\": "+ "\"" + password + "\"" +"}";
+            String payload = "{\"username\": " + "\"" + username + "\"" +
+                    ", \"name\": " + "\"" + name + "\"" +
+                    ", \"email\": " + "\"" + email + "\"" +
+                    ", \"phoneNumber\": " + "\"" + phoneNumber + "\"" +
+                    ", \"password\": "+ "\"" + password + "\"" +"}";
 
             RequestBody body = RequestBody.create(JSON, payload);
 
