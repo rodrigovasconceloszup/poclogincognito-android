@@ -292,6 +292,7 @@
                     android:fontFamily="@font/itautext_rg"
                     android:text="você tem 1.000 pts prestes a expirar"
                     android:textAllCaps="false"
+                    android:textColor="@color/black"
                     android:textAppearance="@style/iuppText" />
 
                 <Space
