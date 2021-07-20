@@ -47,6 +47,7 @@ public class Itaucard extends AppCompatActivity {
                 expandOcultTextView.setText("ocultar");
                 moreTextLayout.setVisibility(View.VISIBLE);
             } else {
+                cardLinearLayout.setMinimumHeight(361);
                 expandOcultTextView.setText("expandir");
                 moreTextLayout.setVisibility(View.GONE);
             }

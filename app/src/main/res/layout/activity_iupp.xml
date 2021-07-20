@@ -85,7 +85,6 @@
                     android:id="@+id/linearLayout"
                     android:layout_width="340dp"
                     android:layout_height="42dp"
-
                     android:orientation="horizontal"
                     tools:layout_editor_absoluteX="-4dp"
                     tools:layout_editor_absoluteY="36dp">
@@ -123,6 +122,7 @@
                         android:id="@+id/expandIcon"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
+                        android:layout_marginBottom="2dp"
                         android:src="@drawable/arrow_down" />
                 </LinearLayout>
 

@@ -15,7 +15,7 @@
         app:strokeColor="@color/lightGrey"
         app:strokeWidth="1dp"
         app:cardUseCompatPadding="true"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCard.Cut"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MaterialCardView.Cut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
                 <TextView
                     android:id="@+id/voc_possui_"
                     android:layout_width="90dp"
-                    android:layout_height="20dp"
+                    android:layout_height="32dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentBottom="true"
                     android:layout_marginLeft="24dp"
@@ -56,7 +56,7 @@
                     android:gravity="top"
                     android:lineSpacingExtra="2sp"
                     android:text="iupp"
-                    android:textAppearance="@style/iuppText"
+                    android:textAppearance="@style/iupp"
                     android:translationY="-0.99sp" />
 
                 <Space
@@ -75,6 +75,7 @@
 
                 <ImageView
                     android:id="@+id/expandIcon"
+                    android:layout_marginTop="6dp"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/arrow_down" />
