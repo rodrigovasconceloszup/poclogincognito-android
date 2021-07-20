@@ -47,6 +47,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginLeft="24dp"
                     android:layout_marginBottom="193dp"
+                    android:fontFamily="@font/itautext_rg"
                     android:gravity="top"
                     android:lineSpacingExtra="2sp"
                     android:text="iupp"
@@ -62,6 +63,7 @@
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="2dp"
+                    android:fontFamily="@font/itautext_rg"
                     android:text="expandir"
                     tools:layout_editor_absoluteX="32dp"
                     tools:layout_editor_absoluteY="16dp" />
@@ -155,6 +157,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="24dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/itautext_bd"
                 android:gravity="top"
                 android:lineSpacingExtra="3sp"
                 android:text="ver mais"
