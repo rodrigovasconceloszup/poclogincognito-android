@@ -13,6 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PocLoginCognitoAndroid"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.itaucard.Itaucard" android:label="Olá, Marco">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.iupp.IuppActivity"
             android:label="@string/iupp">
@@ -21,10 +28,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>>
+        </activity>
         <activity
             android:name=".ui.webview.MyWebviewActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
