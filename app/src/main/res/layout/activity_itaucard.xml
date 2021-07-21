@@ -81,6 +81,15 @@
                     android:src="@drawable/arrow_down" />
             </LinearLayout>
 
+            <View
+                android:layout_width="295dp"
+                android:layout_height="1dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="24dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/rectangle"
+                />
+
             <LinearLayout
                 android:id="@+id/moreTextLayout"
                 android:layout_width="match_parent"
