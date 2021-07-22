@@ -18,24 +18,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.poclogincognitoandroid.R;
+import com.example.poclogincognitoandroid.ui.iupp.Presenter.IuppPresenter;
+import com.example.poclogincognitoandroid.ui.iupp.View.IIuppView;
 import com.example.poclogincognitoandroid.ui.webview.MyWebviewActivity;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Map;
-import java.util.Objects;
-
-import core.Config;
-import core.User;
+import core.factory.RetrofitFactory;
 import network.AuthService;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
-public class IuppActivity extends AppCompatActivity {
+public class IuppActivity extends AppCompatActivity implements IIuppView  {
 
     ImageView expandIcon;
     TextView expandOcultTextView;
@@ -44,13 +35,16 @@ public class IuppActivity extends AppCompatActivity {
     Button goToIuppBtn;
     ProgressBar goToIuppBtnLoading;
 
+    String points;
     boolean isExpanded = false;
+
+    IuppPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final String points = getIntent().getStringExtra("points");
+        points = getIntent().getStringExtra("points");
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -59,6 +53,7 @@ public class IuppActivity extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.arrow_back_small);
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.white)));
         actionBar.setTitle(Html.fromHtml("<font color=\"#726A64\">" + getString(R.string.iupp) + "</font>"));
+
         setContentView(R.layout.activity_iupp);
         expandIcon = findViewById(R.id.expandIcon);
         expandOcultTextView = findViewById(R.id.expandOcultTextView);
@@ -70,55 +65,21 @@ public class IuppActivity extends AppCompatActivity {
 
         View.OnClickListener onClick = v -> {
             isExpanded = !isExpanded;
-            if (isExpanded) {
-                cardLinearLayout.setMinimumHeight(400);
-                expandOcultTextView.setText(R.string.iupp_ocultar);
-                moreTextLayout.setVisibility(View.VISIBLE);
-            } else {
-                expandOcultTextView.setText(R.string.iupp_expandir);
-                moreTextLayout.setVisibility(View.GONE);
-            }
+            expandOcultTextView.setText(isExpanded ? R.string.iupp_ocultar : R.string.iupp_expandir);
+            moreTextLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
             expandIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), !isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up, null));
         };
         expandIcon.setOnClickListener(onClick);
         expandOcultTextView.setOnClickListener(onClick);
 
+        final Retrofit retrofit = RetrofitFactory.make(IuppActivity.this);
+        AuthService authService = retrofit.create(AuthService.class);
+        presenter = new IuppPresenter(this, authService);
+
         goToIuppBtn = (Button) findViewById(R.id.goToIuppBtn);
         goToIuppBtn.setOnClickListener(v -> {
-            final User user = new User();
-
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(Objects.requireNonNull(Config.getConfigValue(IuppActivity.this, "baseUrl")))
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            AuthService service = retrofit.create(AuthService.class);
-
             setIsLoading(true);
-            service.authUser(user).enqueue(new Callback<Map<String, String>>() {
-                @Override
-                public void onResponse(@NotNull Call<Map<String, String>> call, @NotNull Response<Map<String, String>> response) {
-                    if (response.isSuccessful()) {
-                        final Map<String, String> body = response.body();
-                        assert body != null;
-                        final String urlRedirect = body.get("urlRedirect");
-
-                        Intent intent = new Intent(IuppActivity.this, MyWebviewActivity.class);
-                        intent.putExtra("urlRedirect", urlRedirect);
-                        intent.putExtra("points", points);
-                        startActivity(intent);
-                        setResult(Activity.RESULT_OK);
-                    }
-                    setIsLoading(false);
-                }
-
-                @Override
-                public void onFailure(@NotNull Call<Map<String, String>> call, @NotNull Throwable t) {
-                    System.out.println(call);
-                    System.out.println(t.getMessage());
-                    setIsLoading(false);
-                }
-            });
+            presenter.authUser();
         });
     }
 
@@ -140,5 +101,21 @@ public class IuppActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onUserAuthSuccess(String urlRedirect) {
+        Intent intent = new Intent(IuppActivity.this, MyWebviewActivity.class);
+        intent.putExtra("urlRedirect", urlRedirect);
+        intent.putExtra("points", points);
+        startActivity(intent);
+        setResult(Activity.RESULT_OK);
+        setIsLoading(false);
+    }
+
+    @Override
+    public void onUserAuthFailed(String error) {
+        System.out.println(error);
+        setIsLoading(false);
     }
 }

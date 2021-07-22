@@ -57,7 +57,6 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
         pointsLoadingIndicator = findViewById(R.id.pointsLoadingIndicator);
         pointsLoadingIndicator.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.iuppSecondaryColor), android.graphics.PorterDuff.Mode.SRC_IN);
 
-
         findViewById(R.id.iupp_banner_1).setOnClickListener(v -> navigateTo(IuppActivity.class));
         findViewById(R.id.iupp_banner_2).setOnClickListener(v -> navigateTo(IuppActivity.class));
         seeMoreText.setOnClickListener(v -> navigateTo(IuppActivity.class));
