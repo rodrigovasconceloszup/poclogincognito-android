@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
@@ -13,35 +14,33 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Space;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.poclogincognitoandroid.R;
 import com.example.poclogincognitoandroid.ui.webview.MyWebviewActivity;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import java.util.Map;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import core.User;
+import network.AuthService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class IuppActivity extends AppCompatActivity {
-
-    public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
-    final OkHttpClient client = new OkHttpClient();
 
     ImageView expandIcon;
     TextView expandOcultTextView;
     LinearLayout cardLinearLayout;
     LinearLayout moreTextLayout;
     Button goToIuppBtn;
+    ProgressBar goToIuppBtnLoading;
 
     boolean isExpanded = false;
 
@@ -52,6 +51,7 @@ public class IuppActivity extends AppCompatActivity {
         final String points = getIntent().getStringExtra("points");
 
         ActionBar actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.arrow_back_small);
@@ -62,15 +62,18 @@ public class IuppActivity extends AppCompatActivity {
         expandOcultTextView = findViewById(R.id.expandOcultTextView);
         cardLinearLayout = findViewById(R.id.cardLinearLayout);
         moreTextLayout = findViewById(R.id.moreTextLayout);
+        goToIuppBtnLoading = findViewById(R.id.goToIuppBtnLoading);
+
+        goToIuppBtnLoading.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.iuppSecondaryColor), android.graphics.PorterDuff.Mode.SRC_IN);
 
         View.OnClickListener onClick = v -> {
             isExpanded = !isExpanded;
             if (isExpanded) {
                 cardLinearLayout.setMinimumHeight(400);
-                expandOcultTextView.setText("ocultar");
+                expandOcultTextView.setText(R.string.iupp_ocultar);
                 moreTextLayout.setVisibility(View.VISIBLE);
             } else {
-                expandOcultTextView.setText("expandir");
+                expandOcultTextView.setText(R.string.iupp_expandir);
                 moreTextLayout.setVisibility(View.GONE);
             }
             expandIcon.setImageDrawable(getResources().getDrawable(!isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
@@ -80,52 +83,46 @@ public class IuppActivity extends AppCompatActivity {
 
         goToIuppBtn = (Button) findViewById(R.id.goToIuppBtn);
         goToIuppBtn.setOnClickListener(v -> {
-            final String username = "marco";
-            final String password = "Iupp@123456";
-            final String name = "Marco";
-            final String email = "marco@gmail.com";
-            final String phoneNumber = "+55DDDTELEFONE";
+            final User user = new User();
 
-            String payload = "{\"username\": " + "\"" + username + "\"" +
-                    ", \"name\": " + "\"" + name + "\"" +
-                    ", \"email\": " + "\"" + email + "\"" +
-                    ", \"phoneNumber\": " + "\"" + phoneNumber + "\"" +
-                    ", \"password\": "+ "\"" + password + "\"" +"}";
-
-            RequestBody body = RequestBody.create(JSON, payload);
-
-            Request request = new Request.Builder()
-                    .url("http://192.168.5.87:8085/identity-cognito/api/v1/auth/login")
-                    .post(body)
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl("http://192.168.1.22:8085/")
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    System.out.println(e);
-                    System.out.println(call);
-                    System.out.println(e.getMessage());
-                }
+            AuthService service = retrofit.create(AuthService.class);
 
+            setIsLoading(true);
+            service.authUser(user).enqueue(new Callback<Map<String, String>>() {
                 @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    String body = response.body().string();
-                    try {
-                        JSONObject json = new JSONObject(body);
-                        final String urlRedirect = json.getString("urlRedirect");
-                        System.out.println(urlRedirect);
+                public void onResponse(@NotNull Call<Map<String, String>> call, @NotNull Response<Map<String, String>> response) {
+                    if (response.isSuccessful()) {
+                        final Map<String, String> body = response.body();
+                        assert body != null;
+                        final String urlRedirect = body.get("urlRedirect");
 
                         Intent intent = new Intent(IuppActivity.this, MyWebviewActivity.class);
                         intent.putExtra("urlRedirect", urlRedirect);
                         intent.putExtra("points", points);
                         startActivity(intent);
                         setResult(Activity.RESULT_OK);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
+                    setIsLoading(false);
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<Map<String, String>> call, @NotNull Throwable t) {
+                    System.out.println(call);
+                    System.out.println(t.getMessage());
+                    setIsLoading(false);
                 }
             });
         });
+    }
+
+    void setIsLoading(boolean isLoading) {
+        goToIuppBtn.setVisibility(isLoading ? View.GONE : View.VISIBLE);
+        goToIuppBtnLoading.setVisibility(isLoading ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -136,10 +133,9 @@ public class IuppActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

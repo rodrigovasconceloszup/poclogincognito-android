@@ -12,4 +12,22 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="ir_para_iupp">ir para o iupp</string>
+    <string name="expanding_icon">ícone de expandir</string>
+    <string name="iupp_girl">garota símbolo iupp</string>
+
+    <string name="iupp_programa_iupp">Programa iupp</string>
+    <string name="iupp_sobre_iuoo">sobre o iupp</string>
+    <string name="iupp_ocultar">ocultar</string>
+    <string name="iupp_expandir">expandir</string>
+    <string name="iupp_message1">Agora, você junta pontos do cartão direto no iupp, mantendo as mesmas regras que tinha no Sempre Presente. </string>
+    <string name="iupp_message2">no iupp você pode:</string>
+    <string name="iupp_message3">\u2022 Consultar extrato de pontos</string>
+    <string name="iupp_message4">\u2022 Comprar produtos com pontos ou pontos + cartão de crédito</string>
+    <string name="iupp_message5">\u2022 Trocar pontos por desconto na fatura do seu Itaucard</string>
+    <string name="iupp_message6">\u2022 Trocar pontos por experiências em restaurantes e benefícios</string>
+    <string name="iupp_message7">\u2022 Transferir pontos para parceiros</string>
+    <string name="iupp_message8">pontos disponíveis</string>
+    <string name="iupp_message_qtd_pontos">50.000 pontos</string>
+    <string name="iupp_message_pontos_expirar">você tem 1.000 pts prestes a expirar</string>
 </resources>
