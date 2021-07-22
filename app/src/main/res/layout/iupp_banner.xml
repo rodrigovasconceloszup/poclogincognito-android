@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="113dp"
+    android:weightSum="1"
+    android:background="@color/black"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/product_description"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lava e Seca Samsung\n WD6000 Inox 11/7 kg  (Wi-Fi)"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/discount_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/IuppShadownText"/>
+
+        <TextView
+            android:textColor="@color/iupp_destac_blue"
+            android:id="@+id/text_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="% OFF no iupp \ncomprando com pontos"
+            android:textSize="12sp"
+            android:maxLines="3"
+            android:ellipsize="marquee"
+            app:layout_constraintStart_toEndOf="@+id/discount_product"
+            app:layout_constraintTop_toTopOf="@+id/discount_product" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="126dp"
+        android:layout_height="wrap_content"
+        android:maxWidth="126dp"
+        android:maxHeight="84dp"
+        android:background="@drawable/iupp_bg"
+        android:layout_weight="2">
+
+        <ImageView
+            android:id="@+id/image_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lavadora">
+        </ImageView>
+
+    </RelativeLayout>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
