@@ -37,6 +37,7 @@ public class IuppActivity extends AppCompatActivity implements IIuppView  {
 
     String points;
     boolean isExpanded = false;
+    boolean autoAuth = false;
 
     IuppPresenter presenter;
 
@@ -45,6 +46,7 @@ public class IuppActivity extends AppCompatActivity implements IIuppView  {
         super.onCreate(savedInstanceState);
 
         points = getIntent().getStringExtra("points");
+        autoAuth = getIntent().getBooleanExtra("autoAuth", false);
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -78,9 +80,16 @@ public class IuppActivity extends AppCompatActivity implements IIuppView  {
 
         goToIuppBtn = (Button) findViewById(R.id.goToIuppBtn);
         goToIuppBtn.setOnClickListener(v -> {
-            setIsLoading(true);
-            presenter.authUser();
+            handleAuthUser();
         });
+        if(autoAuth) {
+            handleAuthUser();
+        }
+    }
+
+    private void handleAuthUser() {
+        setIsLoading(true);
+        presenter.authUser();
     }
 
     void setIsLoading(boolean isLoading) {

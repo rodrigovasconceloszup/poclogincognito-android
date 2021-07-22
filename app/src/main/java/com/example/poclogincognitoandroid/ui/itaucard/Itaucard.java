@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
@@ -57,18 +56,19 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
         screenLoadingIndicator = findViewById(R.id.screenLoadingIndicator);
         screenLoadingIndicator.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.iuppSecondaryColor), android.graphics.PorterDuff.Mode.SRC_IN);
 
-        findViewById(R.id.iupp_banner_1).setOnClickListener(v -> navigateTo(IuppActivity.class));
-        findViewById(R.id.iupp_banner_2).setOnClickListener(v -> navigateTo(IuppActivity.class));
-        seeMoreText.setOnClickListener(v -> navigateTo(IuppActivity.class));
+        findViewById(R.id.iupp_banner_1).setOnClickListener(v -> navigateToIuppActivity(true));
+        findViewById(R.id.iupp_banner_2).setOnClickListener(v -> navigateToIuppActivity(true));
+        seeMoreText.setOnClickListener(v -> navigateToIuppActivity(false));
         expandIcon.setOnClickListener(this);
         expandOcultTextView.setOnClickListener(this);
 
         new LoadingPoints().execute();
     }
 
-    private void navigateTo(Class<?> cls) {
+    private void navigateToIuppActivity(boolean autoAuth) {
         if (isLoading) return;
-        Intent intent = new Intent(this, cls);
+        Intent intent = new Intent(this, IuppActivity.class);
+        intent.putExtra("autoAuth", autoAuth);
         intent.putExtra("points", Config.getConfigValue(Itaucard.this, "defaultPoints"));
         startActivity(intent);
         setResult(Activity.RESULT_OK);
