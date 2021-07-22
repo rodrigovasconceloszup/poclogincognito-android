@@ -154,17 +154,7 @@
                     android:lineSpacingExtra="7sp"
                     android:text="@string/iupp_message_qtd_pontos"
                     android:textAppearance="@style/iuppMegaBold"
-                    android:visibility="gone"
                     android:translationY="-3.45sp" />
-
-                <ProgressBar
-                    android:id="@+id/pointsLoadingIndicator"
-                    android:elevation="8dp"
-                    android:indeterminate="true"
-                    android:indeterminateTintMode="src_in"
-                    android:layout_gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"/>
 
                 <Button
                     android:layout_width="300dp"
@@ -222,6 +212,7 @@
 
         <ProgressBar
             style="?android:attr/progressBarStyleLarge"
+            android:id="@+id/screenLoadingIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminate="true"

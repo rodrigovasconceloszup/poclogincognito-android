@@ -30,7 +30,7 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
     TextView seeMoreText;
     TextView qtdPointsTv;
     LinearLayout moreTextLayout;
-    ProgressBar pointsLoadingIndicator;
+    ProgressBar screenLoadingIndicator;
 
     boolean isExpanded = false;
     boolean isLoading = false;
@@ -54,8 +54,8 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
         moreTextLayout = findViewById(R.id.moreTextLayout);
         seeMoreText = findViewById(R.id.seeMoreText);
         qtdPointsTv = findViewById(R.id.qtdPointsTv);
-        pointsLoadingIndicator = findViewById(R.id.pointsLoadingIndicator);
-        pointsLoadingIndicator.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.iuppSecondaryColor), android.graphics.PorterDuff.Mode.SRC_IN);
+        screenLoadingIndicator = findViewById(R.id.screenLoadingIndicator);
+        screenLoadingIndicator.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.iuppSecondaryColor), android.graphics.PorterDuff.Mode.SRC_IN);
 
         findViewById(R.id.iupp_banner_1).setOnClickListener(v -> navigateTo(IuppActivity.class));
         findViewById(R.id.iupp_banner_2).setOnClickListener(v -> navigateTo(IuppActivity.class));
@@ -76,8 +76,6 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
 
     @Override
     public String onPointsFetch(String points) {
-        pointsLoadingIndicator.setVisibility(View.GONE);
-        qtdPointsTv.setVisibility(View.VISIBLE);
         return points;
     }
 
