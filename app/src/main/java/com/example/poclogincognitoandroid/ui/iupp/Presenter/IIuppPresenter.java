@@ -1,5 +1,5 @@
 package com.example.poclogincognitoandroid.ui.iupp.Presenter;
 
-public interface IIuppPresenter {
-    void authUser();
-}
+import com.example.poclogincognitoandroid.base.presenter.IBasePresenter;
+
+public interface IIuppPresenter extends IBasePresenter { }

@@ -76,7 +76,7 @@ public class IuppActivity extends AppCompatActivity implements IIuppView  {
 
         final Retrofit retrofit = RetrofitFactory.make(IuppActivity.this);
         AuthService authService = retrofit.create(AuthService.class);
-        presenter = new IuppPresenter(this, authService);
+        presenter = new IuppPresenter(this,this, authService);
 
         goToIuppBtn = (Button) findViewById(R.id.goToIuppBtn);
         goToIuppBtn.setOnClickListener(v -> {

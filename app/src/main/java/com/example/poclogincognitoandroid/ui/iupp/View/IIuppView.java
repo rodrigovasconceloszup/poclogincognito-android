@@ -1,7 +1,5 @@
 package com.example.poclogincognitoandroid.ui.iupp.View;
 
-public interface IIuppView {
-    void onUserAuthSuccess(String urlRedirect);
+import com.example.poclogincognitoandroid.base.view.IBaseView;
 
-    void onUserAuthFailed(String error);
-}
+public interface IIuppView extends IBaseView { }

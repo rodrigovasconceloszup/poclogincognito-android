@@ -25,6 +25,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import core.Config;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -93,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             RequestBody body = RequestBody.create(JSON, payload);
 
             Request request = new Request.Builder()
-                    .url("http://192.168.5.87:8085/identity-cognito/api/v1/auth/login")
+                    .url(Config.getConfigValue(this, "baseUrl") + "/identity-cognito/api/v1/auth/login")
                     .post(body)
                     .build();
 

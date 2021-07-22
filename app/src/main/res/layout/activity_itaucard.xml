@@ -203,7 +203,7 @@
     <FrameLayout
         android:id="@+id/progressBarHolder"
         android:animateLayoutChanges="true"
-        android:visibility="visible"
+        android:visibility="gone"
         android:alpha="0.4"
         android:elevation="20dp"
         android:background="#000000"

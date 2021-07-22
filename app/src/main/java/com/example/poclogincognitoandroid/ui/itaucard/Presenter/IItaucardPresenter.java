@@ -1,5 +1,7 @@
 package com.example.poclogincognitoandroid.ui.itaucard.Presenter;
 
-public interface IItaucardPresenter {
+import com.example.poclogincognitoandroid.base.presenter.IBasePresenter;
+
+public interface IItaucardPresenter extends IBasePresenter {
     String onFetchPoints(String cpf);
 }
