@@ -27,7 +27,7 @@
                 android:layout_width="306dp"/>
 
             <include layout="@layout/iupp_banner"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_height="133dp"
                 android:layout_width="306dp" />
 
@@ -49,9 +49,8 @@
         app:strokeWidth="1dp">
 
         <LinearLayout
-            android:id="@+id/cardLinearLayout"
             android:layout_width="361dp"
-            android:layout_height="114dp"
+            android:layout_height="wrap_content"
             android:background="@color/white"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +73,7 @@
                     android:id="@+id/voc_possui_"
                     android:layout_width="90dp"
                     android:layout_height="32dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginBottom="193dp"
                     android:fontFamily="@font/itautext_rg"
                     android:gravity="top"
@@ -91,7 +90,7 @@
                     android:id="@+id/expandOcultTextView"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginEnd="2dp"
                     android:fontFamily="@font/itautext_rg"
                     android:text="@string/iupp_expandir"
                     tools:layout_editor_absoluteX="32dp"
@@ -109,20 +108,20 @@
             <View
                 android:layout_width="295dp"
                 android:layout_height="1dp"
-                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
                 android:background="@drawable/rectangle" />
 
             <LinearLayout
                 android:id="@+id/moreTextLayout"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
 
                 <View
                     android:layout_width="295dp"
                     android:layout_height="1dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
                     android:background="@drawable/rectangle" />
 
                 <Space
@@ -133,7 +132,7 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
                     android:text="@string/iupp_pontos_disponiveis"
                     tools:layout_editor_absoluteX="29dp"
                     tools:layout_editor_absoluteY="105dp" />
@@ -143,20 +142,30 @@
                     android:layout_height="4dp" />
 
                 <TextView
-                    android:id="@+id/r_2_650_00"
+                    android:id="@+id/qtdPointsTv"
                     android:layout_width="match_parent"
                     android:layout_height="28dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
                     android:gravity="top"
                     android:lineSpacingExtra="7sp"
                     android:text="@string/iupp_message_qtd_pontos"
                     android:textAppearance="@style/iuppMegaBold"
+                    android:visibility="gone"
                     android:translationY="-3.45sp" />
+
+                <ProgressBar
+                    android:id="@+id/pointsLoadingIndicator"
+                    android:elevation="8dp"
+                    android:indeterminate="true"
+                    android:indeterminateTintMode="src_in"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
 
                 <Button
                     android:layout_width="300dp"
                     android:layout_height="56dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:backgroundTint="@color/iuppContainerColor"
                     android:elevation="0dp"
@@ -172,7 +181,7 @@
                 <View
                     android:layout_width="295dp"
                     android:layout_height="1dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginStart="24dp"
                     android:background="@drawable/rectangle" />
             </LinearLayout>
 
@@ -184,7 +193,7 @@
                 android:id="@+id/seeMoreText"
                 android:layout_width="62dp"
                 android:layout_height="24dp"
-                android:layout_marginLeft="24dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/itautext_bd"
                 android:gravity="top"
