@@ -13,6 +13,11 @@ public class ItaucardPresenter implements IItaucardPresenter {
 
     @Override
     public String onFetchPoints(String cpf) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return itaucardView.onPointsFetch(defaultPoints);
     }
 }

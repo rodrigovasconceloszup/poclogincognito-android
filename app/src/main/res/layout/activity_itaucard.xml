@@ -22,11 +22,15 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content">
 
-            <include layout="@layout/iupp_banner"
+            <include
+                layout="@layout/iupp_banner"
+                android:id="@+id/iupp_banner_1"
                 android:layout_height="133dp"
                 android:layout_width="306dp"/>
 
-            <include layout="@layout/iupp_banner"
+            <include
+                layout="@layout/iupp_banner"
+                android:id="@+id/iupp_banner_2"
                 android:layout_marginStart="8dp"
                 android:layout_height="133dp"
                 android:layout_width="306dp" />
@@ -205,4 +209,22 @@
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <FrameLayout
+        android:id="@+id/progressBarHolder"
+        android:animateLayoutChanges="true"
+        android:visibility="visible"
+        android:alpha="0.4"
+        android:elevation="20dp"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
