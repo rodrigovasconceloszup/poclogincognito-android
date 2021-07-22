@@ -1,6 +1,7 @@
 package com.example.poclogincognitoandroid.ui.itaucard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.poclogincognitoandroid.R;
 import com.example.poclogincognitoandroid.ui.iupp.IuppActivity;
+
+import core.Config;
 
 public class Itaucard extends AppCompatActivity {
 
@@ -34,7 +37,7 @@ public class Itaucard extends AppCompatActivity {
         seeMoreText = findViewById(R.id.seeMoreText);
         seeMoreText.setOnClickListener(v -> {
             Intent intent = new Intent(this, IuppActivity.class);
-            intent.putExtra("points", "50000");
+            intent.putExtra("points", Config.getConfigValue(Itaucard.this, "defaultPoints"));
             startActivity(intent);
             setResult(Activity.RESULT_OK);
         });
@@ -50,7 +53,7 @@ public class Itaucard extends AppCompatActivity {
                 expandOcultTextView.setText(R.string.iupp_expandir);
                 moreTextLayout.setVisibility(View.GONE);
             }
-            expandIcon.setImageDrawable(getResources().getDrawable(!isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
+            expandIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), !isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up, null));
         };
         expandIcon.setOnClickListener(onClick);
         expandOcultTextView.setOnClickListener(onClick);

@@ -2,6 +2,7 @@ package com.example.poclogincognitoandroid.ui.iupp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,7 +23,9 @@ import com.example.poclogincognitoandroid.ui.webview.MyWebviewActivity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
+import java.util.Objects;
 
+import core.Config;
 import core.User;
 import network.AuthService;
 
@@ -75,7 +78,7 @@ public class IuppActivity extends AppCompatActivity {
                 expandOcultTextView.setText(R.string.iupp_expandir);
                 moreTextLayout.setVisibility(View.GONE);
             }
-            expandIcon.setImageDrawable(getResources().getDrawable(!isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));
+            expandIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), !isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up, null));
         };
         expandIcon.setOnClickListener(onClick);
         expandOcultTextView.setOnClickListener(onClick);
@@ -85,7 +88,7 @@ public class IuppActivity extends AppCompatActivity {
             final User user = new User();
 
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.22:8085/")
+                    .baseUrl(Objects.requireNonNull(Config.getConfigValue(IuppActivity.this, "baseUrl")))
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
