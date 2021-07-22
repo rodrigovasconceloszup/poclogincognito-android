@@ -79,7 +79,6 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Do something after 5s = 5000ms
                 presenter.onFetchPoints("00000000000");
             }
         }, 2000);
