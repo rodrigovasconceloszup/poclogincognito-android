@@ -11,4 +11,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="disabledColor">#FFE1E4EC</color>
     <color name="disabledTextColor">#FFB1B5BF</color>
+    <color name="iupp_destac_blue">#00EEE6</color>
 </resources>

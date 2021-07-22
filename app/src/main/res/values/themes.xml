@@ -13,4 +13,11 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="IuppShadownText" parent="@android:style/TextAppearance">
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowColor">@color/iupp_destac_blue</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
