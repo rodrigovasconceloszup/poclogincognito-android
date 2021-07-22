@@ -12,10 +12,12 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="ver_mais">ver mais</string>
     <string name="ir_para_iupp">ir para o iupp</string>
     <string name="expanding_icon">ícone de expandir</string>
-    <string name="iupp_girl">garota símbolo iupp</string>
 
+    <string name="iupp_girl">garota símbolo iupp</string>
+    <string name="iupp_pontos_disponiveis">pontos disponíveis</string>
     <string name="iupp_programa_iupp">Programa iupp</string>
     <string name="iupp_sobre_iuoo">sobre o iupp</string>
     <string name="iupp_ocultar">ocultar</string>

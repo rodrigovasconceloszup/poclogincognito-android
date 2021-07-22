@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.example.poclogincognitoandroid.R;
 import com.example.poclogincognitoandroid.ui.iupp.IuppActivity;
-import com.example.poclogincognitoandroid.ui.webview.MyWebviewActivity;
 
 public class Itaucard extends AppCompatActivity {
 
@@ -44,11 +43,11 @@ public class Itaucard extends AppCompatActivity {
             isExpanded = !isExpanded;
             if (isExpanded) {
                 cardLinearLayout.setMinimumHeight(400);
-                expandOcultTextView.setText("ocultar");
+                expandOcultTextView.setText(R.string.iupp_ocultar);
                 moreTextLayout.setVisibility(View.VISIBLE);
             } else {
                 cardLinearLayout.setMinimumHeight(361);
-                expandOcultTextView.setText("expandir");
+                expandOcultTextView.setText(R.string.iupp_expandir);
                 moreTextLayout.setVisibility(View.GONE);
             }
             expandIcon.setImageDrawable(getResources().getDrawable(!isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up));

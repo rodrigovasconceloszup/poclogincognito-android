@@ -308,8 +308,6 @@
                     <ProgressBar
                         android:id="@+id/goToIuppBtnLoading"
                         android:elevation="8dp"
-                        android:outlineAmbientShadowColor="@color/iuppSecondaryColor"
-                        android:outlineSpotShadowColor="@color/iuppSecondaryColor"
                         android:indeterminate="true"
                         android:indeterminateTintMode="src_in"
                         android:visibility="gone"
