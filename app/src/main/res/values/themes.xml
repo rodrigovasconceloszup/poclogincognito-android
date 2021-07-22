@@ -19,9 +19,9 @@
         <item name="android:actionBarStyle">@style/ItauAppBar</item>
     </style>
     <style name="IuppShadownText" parent="@android:style/TextAppearance">
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">3</item>
         <item name="android:shadowColor">@color/iupp_destac_blue</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
