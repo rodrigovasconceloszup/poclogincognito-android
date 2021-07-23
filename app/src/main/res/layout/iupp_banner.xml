@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
@@ -8,11 +9,10 @@
     android:maxWidth="306dp"
     android:weightSum="1"
     android:background="@drawable/rounded_card"
-    android:paddingLeft="16dp"
+    android:paddingStart="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="8dp"
-    android:paddingRight="0dp"
-    >
+    android:paddingEnd="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
@@ -25,7 +25,7 @@
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lava e Seca Samsung WD6000 Inox 11/7 kg  (Wi-Fi)"
+            android:text="@string/lava_e_seca_samsung_wd6000_inox_11_7_kg_wi_fi"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
             android:id="@+id/discount_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="30"
+            android:text="@string/_30"
             android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,10 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:ellipsize="marquee"
             android:maxLines="3"
-            android:text="% OFF no iupp \ncomprando com pontos"
+            android:text="@string/off_no_iupp_ncomprando_com_pontos"
             android:textColor="@color/iupp_destac_blue"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/discount_product"
@@ -70,7 +70,8 @@
             android:layout_weight="0.05"
             android:src="@drawable/lavadora"
             tools:layout_editor_absoluteX="37dp"
-            tools:layout_editor_absoluteY="0dp"/>
+            tools:layout_editor_absoluteY="0dp"
+            android:contentDescription="@string/lavadora" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

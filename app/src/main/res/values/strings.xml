@@ -32,4 +32,8 @@
     <string name="iupp_message8">pontos disponíveis</string>
     <string name="iupp_message_qtd_pontos">50.000 pontos</string>
     <string name="iupp_message_pontos_expirar">você tem 1.000 pts prestes a expirar</string>
+    <string name="lavadora">Lavadora</string>
+    <string name="off_no_iupp_ncomprando_com_pontos">% OFF no iupp \ncomprando com pontos</string>
+    <string name="_30">30</string>
+    <string name="lava_e_seca_samsung_wd6000_inox_11_7_kg_wi_fi">Lava e Seca Samsung WD6000 Inox 11/7 kg (Wi-Fi)</string>
 </resources>

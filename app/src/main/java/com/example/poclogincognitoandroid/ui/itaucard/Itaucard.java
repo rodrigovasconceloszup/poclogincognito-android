@@ -1,6 +1,7 @@
 package com.example.poclogincognitoandroid.ui.itaucard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.app.Activity;
@@ -32,15 +33,15 @@ public class Itaucard extends AppCompatActivity implements IItaucardView {
     TextView qtdPointsTv;
     LinearLayout moreTextLayout;
     ProgressBar screenLoadingIndicator;
-
-    boolean isExpanded = false;
-    boolean isLoading = false;
-
-    ItaucardPresenter presenter;
-
     FrameLayout progressBarHolder;
     AlphaAnimation inAnimation;
     AlphaAnimation outAnimation;
+    LinearLayoutCompat banner1, banner2;
+
+    ItaucardPresenter presenter;
+
+    boolean isExpanded = false;
+    boolean isLoading = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +57,11 @@ public class Itaucard extends AppCompatActivity implements IItaucardView {
         qtdPointsTv = findViewById(R.id.qtdPointsTv);
         screenLoadingIndicator = findViewById(R.id.screenLoadingIndicator);
         screenLoadingIndicator.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.iuppSecondaryColor), android.graphics.PorterDuff.Mode.SRC_IN);
+        banner1 = findViewById(R.id.iupp_banner_1);
+        banner2 = findViewById(R.id.iupp_banner_2);
 
-        findViewById(R.id.iupp_banner_1).setOnClickListener(v -> handleClickBanner());
-        findViewById(R.id.iupp_banner_2).setOnClickListener(v -> handleClickBanner());
+        banner1.setOnClickListener(v -> handleClickBanner());
+        banner2.setOnClickListener(v -> handleClickBanner());
         seeMoreText.setOnClickListener(v -> navigateToIuppActivity());
         expandIcon.setOnClickListener(v -> handleExpandOcult());
         expandOcultTextView.setOnClickListener(v -> handleExpandOcult());
@@ -96,28 +99,6 @@ public class Itaucard extends AppCompatActivity implements IItaucardView {
         setResult(Activity.RESULT_OK);
     }
 
-    @Override
-    public String onPointsFetch(String points) {
-        finishAnimation();
-        return points;
-    }
-
-    @Override
-    public void onUserAuthSuccess(String urlRedirect) {
-        finishAnimation();
-        Intent intent = new Intent(Itaucard.this, MyWebviewActivity.class);
-        intent.putExtra("urlRedirect", urlRedirect);
-        intent.putExtra("points", Config.getConfigValue(Itaucard.this, "defaultPoints"));
-        startActivity(intent);
-        setResult(Activity.RESULT_OK);
-    }
-
-    @Override
-    public void onUserAuthFailed(String error) {
-        System.out.println(error);
-        isLoading = false;
-    }
-
     private void finishAnimation() {
         outAnimation = new AlphaAnimation(1f, 0f);
         outAnimation.setDuration(200);
@@ -147,5 +128,27 @@ public class Itaucard extends AppCompatActivity implements IItaucardView {
         protected Void doInBackground(Void... params) {
             return null;
         }
+    }
+
+    @Override
+    public String onPointsFetch(String points) {
+        finishAnimation();
+        return points;
+    }
+
+    @Override
+    public void onUserAuthSuccess(String urlRedirect) {
+        finishAnimation();
+        Intent intent = new Intent(Itaucard.this, MyWebviewActivity.class);
+        intent.putExtra("urlRedirect", urlRedirect);
+        intent.putExtra("points", Config.getConfigValue(Itaucard.this, "defaultPoints"));
+        startActivity(intent);
+        setResult(Activity.RESULT_OK);
+    }
+
+    @Override
+    public void onUserAuthFailed(String error) {
+        System.out.println(error);
+        isLoading = false;
     }
 }
