@@ -22,8 +22,8 @@ import com.example.poclogincognitoandroid.ui.iupp.Presenter.IuppPresenter;
 import com.example.poclogincognitoandroid.ui.iupp.View.IIuppView;
 import com.example.poclogincognitoandroid.ui.webview.MyWebviewActivity;
 
-import core.factory.RetrofitFactory;
-import network.AuthService;
+import com.example.poclogincognitoandroid.core.factory.RetrofitFactory;
+import com.example.poclogincognitoandroid.network.AuthService;
 import retrofit2.Retrofit;
 
 public class IuppActivity extends AppCompatActivity implements IIuppView  {
@@ -37,7 +37,6 @@ public class IuppActivity extends AppCompatActivity implements IIuppView  {
 
     String points;
     boolean isExpanded = false;
-    boolean autoAuth = false;
 
     IuppPresenter presenter;
 
@@ -46,7 +45,6 @@ public class IuppActivity extends AppCompatActivity implements IIuppView  {
         super.onCreate(savedInstanceState);
 
         points = getIntent().getStringExtra("points");
-        autoAuth = getIntent().getBooleanExtra("autoAuth", false);
 
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
@@ -79,12 +77,7 @@ public class IuppActivity extends AppCompatActivity implements IIuppView  {
         presenter = new IuppPresenter(this,this, authService);
 
         goToIuppBtn = (Button) findViewById(R.id.goToIuppBtn);
-        goToIuppBtn.setOnClickListener(v -> {
-            handleAuthUser();
-        });
-        if(autoAuth) {
-            handleAuthUser();
-        }
+        goToIuppBtn.setOnClickListener(v -> handleAuthUser());
     }
 
     private void handleAuthUser() {

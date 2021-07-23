@@ -5,7 +5,7 @@ import android.content.Context;
 import com.example.poclogincognitoandroid.base.presenter.BasePresenter;
 import com.example.poclogincognitoandroid.ui.iupp.View.IIuppView;
 
-import network.AuthService;
+import com.example.poclogincognitoandroid.network.AuthService;
 
 public class IuppPresenter extends BasePresenter {
 

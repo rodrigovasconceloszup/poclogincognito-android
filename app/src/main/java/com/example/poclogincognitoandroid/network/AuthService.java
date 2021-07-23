@@ -1,8 +1,8 @@
-package network;
+package com.example.poclogincognitoandroid.network;
 
 import java.util.Map;
 
-import core.User;
+import com.example.poclogincognitoandroid.core.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

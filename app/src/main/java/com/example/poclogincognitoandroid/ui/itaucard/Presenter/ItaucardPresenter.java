@@ -1,12 +1,9 @@
 package com.example.poclogincognitoandroid.ui.itaucard.Presenter;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.poclogincognitoandroid.base.presenter.BasePresenter;
 import com.example.poclogincognitoandroid.ui.itaucard.View.IItaucardView;
-
-import network.AuthService;
 
 public class ItaucardPresenter extends BasePresenter implements IItaucardPresenter {
     IItaucardView itaucardView;

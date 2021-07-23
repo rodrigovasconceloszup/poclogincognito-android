@@ -1,10 +1,10 @@
-package core.factory;
+package com.example.poclogincognitoandroid.core.factory;
 
 import android.content.Context;
 
 import java.util.Objects;
 
-import core.Config;
+import com.example.poclogincognitoandroid.core.Config;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 

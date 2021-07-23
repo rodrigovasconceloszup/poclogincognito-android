@@ -1,4 +1,4 @@
-package core;
+package com.example.poclogincognitoandroid.core;
 
 public class User {
     final String username = "marco";

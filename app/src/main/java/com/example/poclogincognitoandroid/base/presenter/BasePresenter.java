@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-import core.User;
-import core.factory.RetrofitFactory;
-import network.AuthService;
+import com.example.poclogincognitoandroid.core.User;
+import com.example.poclogincognitoandroid.core.factory.RetrofitFactory;
+import com.example.poclogincognitoandroid.network.AuthService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

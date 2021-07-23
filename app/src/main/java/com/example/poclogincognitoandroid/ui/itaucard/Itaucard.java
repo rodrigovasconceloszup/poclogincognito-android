@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
@@ -24,9 +22,9 @@ import com.example.poclogincognitoandroid.ui.itaucard.View.IItaucardView;
 import com.example.poclogincognitoandroid.ui.iupp.IuppActivity;
 import com.example.poclogincognitoandroid.ui.webview.MyWebviewActivity;
 
-import core.Config;
+import com.example.poclogincognitoandroid.core.Config;
 
-public class Itaucard extends AppCompatActivity implements IItaucardView, View.OnClickListener {
+public class Itaucard extends AppCompatActivity implements IItaucardView {
 
     ImageView expandIcon;
     TextView expandOcultTextView;
@@ -59,15 +57,11 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
         screenLoadingIndicator = findViewById(R.id.screenLoadingIndicator);
         screenLoadingIndicator.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.iuppSecondaryColor), android.graphics.PorterDuff.Mode.SRC_IN);
 
-        findViewById(R.id.iupp_banner_1).setOnClickListener(v -> {
-            handleClickBanner();
-        });
-        findViewById(R.id.iupp_banner_2).setOnClickListener(v -> {
-            handleClickBanner();
-        });
-        seeMoreText.setOnClickListener(v -> navigateToIuppActivity(false));
-        expandIcon.setOnClickListener(this);
-        expandOcultTextView.setOnClickListener(this);
+        findViewById(R.id.iupp_banner_1).setOnClickListener(v -> handleClickBanner());
+        findViewById(R.id.iupp_banner_2).setOnClickListener(v -> handleClickBanner());
+        seeMoreText.setOnClickListener(v -> navigateToIuppActivity());
+        expandIcon.setOnClickListener(v -> handleExpandOcult());
+        expandOcultTextView.setOnClickListener(v -> handleExpandOcult());
 
         init();
     }
@@ -76,12 +70,7 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
         if (isLoading) return;
         new AnimationLoading().execute();
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                presenter.onFetchPoints("00000000000");
-            }
-        }, 2000);
+        handler.postDelayed(() -> presenter.onFetchPoints("00000000000"), 2000);
     }
 
     private void handleClickBanner() {
@@ -89,10 +78,19 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
         new AnimationLoading().execute();
     }
 
-    private void navigateToIuppActivity(boolean autoAuth) {
+    private void handleExpandOcult() {
         if (isLoading) return;
+        isExpanded = !isExpanded;
+        expandOcultTextView.setText(isExpanded ? R.string.iupp_ocultar : R.string.iupp_expandir);
+        moreTextLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        expandIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), !isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up, null));
+    }
+
+    private void navigateToIuppActivity() {
+        if (isLoading) {
+            return;
+        }
         Intent intent = new Intent(this, IuppActivity.class);
-        intent.putExtra("autoAuth", autoAuth);
         intent.putExtra("points", Config.getConfigValue(Itaucard.this, "defaultPoints"));
         startActivity(intent);
         setResult(Activity.RESULT_OK);
@@ -100,18 +98,8 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
 
     @Override
     public String onPointsFetch(String points) {
-        Log.i("TESTE", "onPointsFetch");
         finishAnimation();
         return points;
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (isLoading) return;
-        isExpanded = !isExpanded;
-        expandOcultTextView.setText(isExpanded ? R.string.iupp_ocultar : R.string.iupp_expandir);
-        moreTextLayout.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
-        expandIcon.setImageDrawable(ResourcesCompat.getDrawable(getResources(), !isExpanded ? R.drawable.arrow_down : R.drawable.arrow_up, null));
     }
 
     @Override
@@ -126,11 +114,11 @@ public class Itaucard extends AppCompatActivity implements IItaucardView, View.O
 
     @Override
     public void onUserAuthFailed(String error) {
-
+        System.out.println(error);
+        isLoading = false;
     }
 
     private void finishAnimation() {
-        Log.i("TESTE", "Finish animation");
         outAnimation = new AlphaAnimation(1f, 0f);
         outAnimation.setDuration(200);
         progressBarHolder.setAnimation(outAnimation);
